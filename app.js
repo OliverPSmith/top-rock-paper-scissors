@@ -1,7 +1,6 @@
 
+
 const rockPaperScissors = ['Rock', 'Paper', 'Scissors'];
-let humanScore = 0;
-let computerScore = 0;
 
 function getComputerChoice () {
     let random = Math.floor(Math.random() * rockPaperScissors.length);
@@ -9,8 +8,6 @@ function getComputerChoice () {
     console.log(randomChoice);
     return randomChoice;
 }
-// getComputerChoice();
-
 
 
 function getHumanChoice () {
@@ -30,33 +27,68 @@ function getHumanChoice () {
         return null;
     }
 };
-// getHumanChoice();
 
 
-function playRound (humanChoice, computerChoice) {
-    if (humanChoice === computerChoice) {
-        console.log(
-        `You: ${humanChoice}
-        Computer: ${computerChoice}
-        Result: DRAW`);
-    }   else if (humanChoice === rockPaperScissors[0] && computerChoice === rockPaperScissors[1] || 
-                humanChoice === rockPaperScissors[1] && computerChoice === rockPaperScissors[2] ||
-                humanChoice === rockPaperScissors[2] && computerChoice === rockPaperScissors[0]) {
-                    console.log(
-                        `You: ${humanChoice}
-                        Computer: ${computerChoice}
-                        Result: You Lose!`);
-    }   else {
-        console.log(
+
+function playGame () {
+
+    let humanScore = 0;
+    let computerScore = 0;
+
+    function playRound (humanChoice, computerChoice) {
+        if (humanChoice === computerChoice || humanChoice === null) {
+            console.log(
             `You: ${humanChoice}
             Computer: ${computerChoice}
-            Result: You Win!`);
-    }
-};
+            Result: DRAW
+            Computer Score: ${computerScore}
+            Your Score: ${humanScore}`);
+        }   else if (humanChoice === rockPaperScissors[0] && computerChoice === rockPaperScissors[1] || 
+                    humanChoice === rockPaperScissors[1] && computerChoice === rockPaperScissors[2] ||
+                    humanChoice === rockPaperScissors[2] && computerChoice === rockPaperScissors[0]) {
+                        computerScore++;
+                        console.log(
+                            `You: ${humanChoice}
+                            Computer: ${computerChoice}
+                            \Result: You Lose!
+                            Computer Score: ${computerScore}
+                            Your Score: ${humanScore}`);
+        }   else {
+            humanScore++;
+            console.log(
+                `You: ${humanChoice}
+                Computer: ${computerChoice}
+                Result: You Win!
+                Computer Score: ${computerScore}
+                Your Score: ${humanScore}`);
+        }
+    };
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
 
-playRound(humanSelection, computerSelection);
+    const humanSelection2 = getHumanChoice();
+    const computerSelection2 = getComputerChoice();
+    playRound(humanSelection2, computerSelection2);
+
+    const humanSelection3 = getHumanChoice();
+    const computerSelection3 = getComputerChoice();
+    playRound(humanSelection3, computerSelection3);
+
+    const humanSelection4 = getHumanChoice();
+    const computerSelection4 = getComputerChoice();
+    playRound(humanSelection4, computerSelection4);
+
+    const humanSelection5 = getHumanChoice();
+    const computerSelection5 = getComputerChoice();
+    playRound(humanSelection5, computerSelection5);
+}
+
+playGame();
+
+
+
+
 
 
