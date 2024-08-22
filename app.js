@@ -5,9 +5,16 @@ const rockPaperScissors = ['Rock', 'Paper', 'Scissors'];
 function getComputerChoice () {
     let random = Math.floor(Math.random() * rockPaperScissors.length);
     let randomChoice = rockPaperScissors[random];
- //   console.log(randomChoice);
     return randomChoice;
 }
+
+const scoreBox = document.querySelector('#score-box');
+
+const yourGuess = document.createElement('p');
+const compGuess = document.createElement('p');
+const roundResult = document.createElement('p');
+const yourScore = document.createElement('p');
+const compScore = document.createElement('p');
 
 function playGame () {
 
@@ -15,7 +22,17 @@ function playGame () {
     let computerScore = 0;
 
     function playRound (humanChoice, computerChoice) {
+        scoreBox.appendChild(yourGuess);
+        scoreBox.appendChild(compGuess);
+        scoreBox.appendChild(roundResult);
+        scoreBox.appendChild(yourScore);
+        scoreBox.appendChild(compScore);
         if (humanChoice === computerChoice || humanChoice === null) {
+            yourGuess.textContent = `Your Selection: ${humanChoice}`
+            compGuess.textContent = `Your Selection: ${computerChoice}`
+            roundResult.textContent = 'DRAW';
+            yourScore.textContent = `Your Score: ${humanScore}`
+            compScore.textContent = `Computer Score: ${computerScore}`
             console.log(
             `You: ${humanChoice}
             Computer: ${computerChoice}
@@ -26,6 +43,11 @@ function playGame () {
                     humanChoice === rockPaperScissors[1] && computerChoice === rockPaperScissors[2] ||
                     humanChoice === rockPaperScissors[2] && computerChoice === rockPaperScissors[0]) {
                         computerScore++;
+                        yourGuess.textContent = `Your Selection: ${humanChoice}`
+                        compGuess.textContent = `Your Selection: ${computerChoice}`
+                        roundResult.textContent = 'You Lose!';
+                        yourScore.textContent = `Your Score: ${humanScore}`
+                        compScore.textContent = `Computer Score: ${computerScore}`
                         console.log(
                             `You: ${humanChoice}
                             Computer: ${computerChoice}
@@ -34,6 +56,11 @@ function playGame () {
                             Your Score: ${humanScore}`);
         }   else {
             humanScore++;
+            yourGuess.textContent = `Your Selection: ${humanChoice}`
+            compGuess.textContent = `Your Selection: ${computerChoice}`
+            roundResult.textContent = 'You Win!';
+            yourScore.textContent = `Your Score: ${humanScore}`
+            compScore.textContent = `Computer Score: ${computerScore}`
             console.log(
                 `You: ${humanChoice}
                 Computer: ${computerChoice}
@@ -45,7 +72,6 @@ function playGame () {
 
 
     const buttons = document.querySelectorAll('button');
-
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             const humanSelection = button.id;
@@ -53,7 +79,7 @@ function playGame () {
             playRound(humanSelection, computerSelection);
         })
     })
-    
+
 }
 
 playGame();
