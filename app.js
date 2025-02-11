@@ -1,5 +1,4 @@
 
-
 const rockPaperScissors = ['Rock', 'Paper', 'Scissors'];
 
 function getComputerChoice () {
@@ -31,7 +30,7 @@ function playGame () {
         scoreBox.appendChild(compScore);
         if (humanChoice === computerChoice || humanChoice === null) {
             yourGuess.textContent = `Your Selection: ${humanChoice}`
-            compGuess.textContent = `Your Selection: ${computerChoice}`
+            compGuess.textContent = `Computer Selection: ${computerChoice}`
             roundResult.textContent = 'DRAW';
             yourScore.textContent = `Your Score: ${humanScore}`
             compScore.textContent = `Computer Score: ${computerScore}`
@@ -46,7 +45,7 @@ function playGame () {
                     humanChoice === rockPaperScissors[2] && computerChoice === rockPaperScissors[0]) {
                         computerScore++;
                         yourGuess.textContent = `Your Selection: ${humanChoice}`
-                        compGuess.textContent = `Your Selection: ${computerChoice}`
+                        compGuess.textContent = `Computer Selection: ${computerChoice}`
                         roundResult.textContent = 'You Lose!';
                         yourScore.textContent = `Your Score: ${humanScore}`
                         compScore.textContent = `Computer Score: ${computerScore}`
@@ -59,7 +58,7 @@ function playGame () {
         }   else {
             humanScore++;
             yourGuess.textContent = `Your Selection: ${humanChoice}`
-            compGuess.textContent = `Your Selection: ${computerChoice}`
+            compGuess.textContent = `Computer Selection: ${computerChoice}`
             roundResult.textContent = 'You Win!';
             yourScore.textContent = `Your Score: ${humanScore}`
             compScore.textContent = `Computer Score: ${computerScore}`
